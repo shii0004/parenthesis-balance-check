@@ -24,20 +24,20 @@ void push(char c) { // pushes into stack
   s->arr[s->top] = c;
 }
 
-int pop() { // pops out of stack
-  int val = s->arr[s->top];
+char pop() { // pops out of stack
+  if (isEmpty()) {
+    return '\0';
+  }
+  char popped = s->arr[s->top];
   s->top--;
-  return val;
+  return popped;
 }
 
-int isMatched(char expression[]) {
-  for (int i = 0; expression[i] != '\0'; i++) { // running loop till null character
-    if (expression[i] == '(') {
-      push(expression[i]);
-    } else if (expression[i] == ')') {
-        if (isEmpty()) {
-          return 0;
-        }
+int isMatched(char expr[]) {
+  for (int i = 0; exp[i] != '\0'; i++) { // running loop till null character
+    if (exp[i] == '(' || exp[i] == '{' || exp == '[') {
+      push(exp[i]);
+    } else if ((exp[i] == ')' && str->arr[str->top] == '(') || (exp[i] == '}' && str->arr[str->top] == '{') || (exp[i] == ']' && str->arr[str->top] == '['))  {
       pop();
     }
 
@@ -51,16 +51,16 @@ int isMatched(char expression[]) {
 
 int main () {
   // input having parentheses
-  char expression[MAX_SIZE];
+  char exp[MAX_SIZE];
   printf("Write expression: ");
-  scanf("%s", &expression);
+  scanf("%s", &exp);
   // creating empty stack
   s = (struct Stack *) malloc(sizeof(struct Stack));
-  s->size = strlen(expression); // preventing stack overflow
+  s->size = strlen(exp); // preventing stack overflow
   s->top = -1;
   s->arr = (char *) malloc(s->size * sizeof(char));
 
-  if (isMatched(expression)) {
+  if (isMatched(exp)) {
     printf("Parentheses are matched.\n");
   } else {
     printf("Parentheses are not matched.\n");
