@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#define MAX_SIZE 100
 
 struct Stack {
   int size;
@@ -49,7 +50,9 @@ int isMatched(char expression[]) {
 
 int main () {
   // input having parentheses
-  char expression[] = "(1+2)";
+  char expression[MAX_SIZE];
+  printf("Write expression: ");
+  scanf("%s", &expression);
   // creating empty stack
   s = (struct Stack *) malloc(sizeof(struct Stack));
   s->size = strlen(expression); // preventing stack overflow
