@@ -66,7 +66,7 @@ int main () {
     printf("Parentheses are not matched.\n");
   }
   
-  //free memory
+  // free memory
   free(s);
   free(s->arr);
 }
