@@ -33,11 +33,11 @@ char pop() { // pops out of stack
   return popped;
 }
 
-int isMatched(char expr[]) {
+int isMatched(char exp[]) {
   for (int i = 0; exp[i] != '\0'; i++) { // running loop till null character
-    if (exp[i] == '(' || exp[i] == '{' || exp == '[') {
+    if (exp[i] == '(' || exp[i] == '{' || exp[i] == '[') {
       push(exp[i]);
-    } else if ((exp[i] == ')' && str->arr[str->top] == '(') || (exp[i] == '}' && str->arr[str->top] == '{') || (exp[i] == ']' && str->arr[str->top] == '['))  {
+    } else if ((exp[i] == ')' && s->arr[s->top] == '(') || (exp[i] == '}' && s->arr[s->top] == '{') || (exp[i] == ']' && s->arr[s->top] == '['))  {
       pop();
     }
 
