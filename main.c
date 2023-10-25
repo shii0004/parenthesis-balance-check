@@ -24,9 +24,10 @@ void push(char c) { // pushes into stack
   s->arr[s->top] = c;
 }
 
-void pop() { // pops out of stack
-  s->arr[s->top] = '\0';
+int pop() { // pops out of stack
+  int val = s->arr[s->top];
   s->top--;
+  return val;
 }
 
 int isMatched(char expression[]) {
